@@ -6,11 +6,12 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { AccountStatus } from '../domain/AccountStatus';
+import { Request } from 'express';
 
 @Injectable()
 export class AccountGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest();
+    const request: Request = context.switchToHttp().getRequest();
     const user = request.user;
 
     if (!user) {
