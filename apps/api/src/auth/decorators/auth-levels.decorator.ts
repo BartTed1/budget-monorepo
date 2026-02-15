@@ -11,8 +11,8 @@ export function Registered() {
 }
 
 /**
- * Decorator for routes that require the user to be authenticated but not yet registered (doesn't have an account in the system)
- * @returns Guard that checks if the user is authenticated but not yet registered (doesn't have an account in the system)
+ * Decorator for routes that require the user to be authenticated but not necessarily have an account in the system
+ * @returns Guard that checks if the user is authenticated
  */
 export function NotYetRegistered() {
   return applyDecorators(UseGuards(AuthGuard));
