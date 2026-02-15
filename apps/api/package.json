@@ -22,7 +22,6 @@
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/jwt": "^11.0.2",
     "@nestjs/platform-express": "^9.0.0",
     "@repo/shared": "workspace:*",
     "firebase-admin": "^13.6.1",
