@@ -6,7 +6,7 @@ import { AccountGuard } from './guards/account.guard';
 @Module({
   imports: [],
   controllers: [],
-  providers: [AuthFacade],
+  providers: [AuthFacade, AuthGuard, AccountGuard],
   exports: [AuthFacade, AuthGuard, AccountGuard],
 })
 export class AuthModule {}
