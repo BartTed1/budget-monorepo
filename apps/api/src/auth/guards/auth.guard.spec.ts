@@ -22,7 +22,6 @@ describe('AuthGuard', () => {
       }),
     } as unknown as ExecutionContext;
 
-    // 4. Sprawdzamy, czy Guard wyrzuci błąd
     await expect(guard.canActivate(mockContext)).rejects.toThrow(
       UnauthorizedException,
     );
@@ -49,13 +48,15 @@ describe('AuthGuard', () => {
   });
 
   it('should return true and set user in request if token is valid', async () => {
+    const mockRequest = {
+      headers: {
+        authorization: 'Bearer valid-token',
+      },
+    };
+
     const mockContext = {
       switchToHttp: () => ({
-        getRequest: () => ({
-          headers: {
-            authorization: 'Bearer valid-token',
-          },
-        }),
+        getRequest: () => mockRequest,
       }),
     } as unknown as ExecutionContext;
 
@@ -63,6 +64,7 @@ describe('AuthGuard', () => {
     firebaseAdminMock.verifyIdToken.mockResolvedValue(decodedToken);
 
     const result = await guard.canActivate(mockContext);
+    expect(mockContext.switchToHttp().getRequest().user).toEqual(decodedToken);
     expect(result).toBe(true);
   });
 });
