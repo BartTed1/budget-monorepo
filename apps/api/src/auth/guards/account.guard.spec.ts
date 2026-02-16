@@ -1,4 +1,4 @@
-import { ExecutionContext } from '@nestjs/common';
+import { ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { AccountStatus } from '../domain/AccountStatus';
 import { AccountGuard } from './account.guard';
 
@@ -21,7 +21,7 @@ describe('AccountGuard', () => {
     } as unknown as ExecutionContext;
 
     await expect(guard.canActivate(mockContext)).rejects.toThrow(
-      'User context not found',
+      UnauthorizedException,
     );
   });
 
