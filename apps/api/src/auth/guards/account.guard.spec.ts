@@ -13,6 +13,10 @@ describe('AccountGuard', () => {
     guard = new AccountGuard();
   });
 
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should be defined', () => {
     expect(guard).toBeDefined();
   });
