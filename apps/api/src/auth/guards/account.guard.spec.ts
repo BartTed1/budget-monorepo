@@ -1,4 +1,8 @@
-import { ExecutionContext, UnauthorizedException } from '@nestjs/common';
+import {
+  ExecutionContext,
+  ForbiddenException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AccountStatus } from '../domain/AccountStatus';
 import { AccountGuard } from './account.guard';
 
@@ -37,7 +41,7 @@ describe('AccountGuard', () => {
     } as unknown as ExecutionContext;
 
     await expect(guard.canActivate(mockContext)).rejects.toThrow(
-      'User has not completed registration process',
+      ForbiddenException,
     );
   });
 
