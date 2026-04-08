@@ -8,3 +8,5 @@ logs
 .turbo
 .env
 **/db/generated/
+CLAUDE.md
+.claude

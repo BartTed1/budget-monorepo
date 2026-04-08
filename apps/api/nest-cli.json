@@ -5,5 +5,8 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true
-  }
+  },
+  "plugins": [
+    "@nestjs/swagger"
+  ]
 }
